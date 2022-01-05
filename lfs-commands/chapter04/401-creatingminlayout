@@ -1,0 +1,15 @@
+#!/bin/bash
+set +h
+set -e
+
+mkdir -pv $LFS/{etc,var} $LFS/usr/{bin,lib,sbin}
+
+for i in bin lib sbin; do
+  ln -sv usr/$i $LFS/$i
+done
+
+case $(uname -m) in
+  aarch64) mkdir -pv $LFS/lib64 ;;
+esac
+mkdir -pv $LFS/tools
+exit

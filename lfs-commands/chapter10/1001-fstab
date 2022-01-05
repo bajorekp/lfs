@@ -1,0 +1,33 @@
+#!/bin/bash
+set +h
+set -e
+
+
+
+PREV_SEC=${SECONDS}
+      
+ROOT=/
+
+SCRIPT_ROOT=jhalfs
+
+echo "KB: $(du -skx --exclude=lost+found --exclude=var/lib --exclude=$SCRIPT_ROOT $ROOT)"
+SECONDS=${PREV_SEC}
+
+# Start of LFS book script
+cat > /etc/fstab << "EOF"
+# Begin /etc/fstab
+
+# file system  mount-point  type     options             dump  fsck
+#                                                              order
+
+/dev/**EDITME<xxx>EDITME**     /            **EDITME<fff>EDITME**    defaults            1     1
+/dev/**EDITME<yyy>EDITME**     swap         swap     pri=1               0     0
+
+# End /etc/fstab
+EOF
+echo -e "\n\nTotalseconds: $SECONDS\n"
+
+# End of LFS book script
+
+echo "KB: $(du -skx --exclude=lost+found --exclude=var/lib --exclude=$SCRIPT_ROOT $ROOT)"
+exit

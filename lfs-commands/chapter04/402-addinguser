@@ -1,0 +1,12 @@
+#!/bin/bash
+set +h
+set -e
+
+groupadd lfs
+useradd -s /bin/bash -g lfs -m -k /dev/null lfs
+chown -v lfs $LFS/{usr{,/*},lib,var,etc,bin,sbin,tools}
+case $(uname -m) in
+  aarch64) chown -v lfs $LFS/lib64 ;;
+esac
+chown -v lfs $LFS/sources
+exit

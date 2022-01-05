@@ -1,0 +1,47 @@
+#!/bin/bash
+set +h
+set -e
+
+
+
+PREV_SEC=${SECONDS}
+      
+ROOT=/
+
+SCRIPT_ROOT=jhalfs
+
+echo "KB: $(du -skx --exclude=lost+found --exclude=var/lib --exclude=$SCRIPT_ROOT $ROOT)"
+SECONDS=${PREV_SEC}
+
+# Start of LFS book script
+cat > /etc/systemd/network/10-eth-static.network << "EOF"
+[Match]
+Name=eth0
+
+[Network]
+Address=10.0.2.9/24
+Gateway=10.0.2.2
+DNS=10.0.2.3
+DNS=8.8.8.8
+Domains=local
+EOF
+ln -sfv /run/systemd/resolve/resolv.conf /etc/resolv.conf
+echo "lfs-arm" > /etc/hostname
+cat > /etc/hosts << "EOF"
+# Begin /etc/hosts
+
+127.0.0.1 localhost.localdomain localhost
+127.0.1.1 lfs-arm.local lfs-arm
+10.0.2.9 lfs-arm.local lfs-arm 
+::1       localhost ip6-localhost ip6-loopback
+ff02::1   ip6-allnodes
+ff02::2   ip6-allrouters
+
+# End /etc/hosts
+EOF
+echo -e "\n\nTotalseconds: $SECONDS\n"
+
+# End of LFS book script
+
+echo "KB: $(du -skx --exclude=lost+found --exclude=var/lib --exclude=$SCRIPT_ROOT $ROOT)"
+exit
