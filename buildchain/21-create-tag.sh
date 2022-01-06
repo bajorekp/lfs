@@ -5,5 +5,5 @@ set -e
 
 source buildchain/.env
 
-docker tag $NAME:$TAG-chapter10 $NAME:$TAG
-docker tag $NAME:$TAG-chapter10 $NAME:latest
+docker tag $NAME:$TAG-chapter11 $NAME:$TAG
+docker tag $NAME:$TAG $NAME:latest
