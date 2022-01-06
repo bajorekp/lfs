@@ -13,5 +13,6 @@ docker push $NAME:$TAG-chapter07
 docker push $NAME:$TAG-chapter08
 docker push $NAME:$TAG-chapter09
 docker push $NAME:$TAG-chapter10 
+docker push $NAME:$TAG-chapter11
 docker push $NAME:$TAG
 docker push $NAME:latest
