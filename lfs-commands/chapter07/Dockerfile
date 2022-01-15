@@ -1,4 +1,4 @@
-ARG PARENT_IMAGE=bajorekp/lfs-11.0-arm-chapter06
+ARG PARENT_IMAGE=bajorekp/lfs:11.0-arm-chapter06
 FROM ${PARENT_IMAGE} as HOST
 
 # Execute everything as root

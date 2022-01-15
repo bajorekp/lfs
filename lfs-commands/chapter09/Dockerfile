@@ -1,4 +1,4 @@
-ARG PARENT_IMAGE=bajorekp/lfs-11.0-arm-chapter08
+ARG PARENT_IMAGE=bajorekp/lfs:11.0-arm-chapter08
 FROM ${PARENT_IMAGE}
 
 # Adds script files

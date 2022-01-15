@@ -1,4 +1,4 @@
-ARG PARENT_IMAGE=bajorekp/lfs-11.0-arm-chapter04
+ARG PARENT_IMAGE=bajorekp/lfs:11.0-arm-chapter04
 FROM ${PARENT_IMAGE}
 
 # Add only script files to docker
